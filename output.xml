@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.10.12 on win32)" generated="20231005 22:09:29.305" rpa="true" schemaversion="4">
+<suite id="s1" name="Test 01" source="d:\HSC_RPA_POC\test_01.robot">
+<test id="s1-t1" name="Send message" line="34">
+<kw name="Open Application" library="RPA.Outlook.Application">
+<arg>visible:True</arg>
+<doc>Open the application.</doc>
+<msg timestamp="20231005 22:09:32.432" level="WARN">Visibility cannot be controlled on this app.</msg>
+<status status="PASS" starttime="20231005 22:09:31.196" endtime="20231005 22:09:32.434"/>
+</kw>
+<kw name="Get Emails" library="RPA.Outlook.Application">
+<var>${emails}</var>
+<arg>account_name=Satyapal.Kumar@hsc.com</arg>
+<arg>folder_name=Inbox</arg>
+<arg>email_filter=[SenderEmailAddress]='HSC.IT@hsc.com'</arg>
+<arg>save_attachments=True</arg>
+<arg>attachment_folder=%{ROBOT_ROOT}${/}attachments</arg>
+<arg>sort=True</arg>
+<arg>sort_key=Received</arg>
+<arg>sort_descending=False</arg>
+<doc>Get emails from a specified email folder. Can be used to save attachments.</doc>
+<msg timestamp="20231005 22:09:32.615" level="INFO">${emails} = []</msg>
+<status status="PASS" starttime="20231005 22:09:32.435" endtime="20231005 22:09:32.615"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${emails}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231005 22:09:32.616" level="INFO">[]</msg>
+<status status="PASS" starttime="20231005 22:09:32.616" endtime="20231005 22:09:32.617"/>
+</kw>
+<for flavor="IN">
+<var>${email}</var>
+<value>@{emails}</value>
+<iter>
+<var name="${email}"/>
+<kw name="Mark Email As Read" library="RPA.Outlook.Application">
+<arg>${email}</arg>
+<doc>Mark email 'read' property. Can be used to mark email as unread.</doc>
+<status status="NOT RUN" starttime="20231005 22:09:32.619" endtime="20231005 22:09:32.619"/>
+</kw>
+<status status="NOT RUN" starttime="20231005 22:09:32.618" endtime="20231005 22:09:32.620"/>
+</iter>
+<status status="NOT RUN" starttime="20231005 22:09:32.617" endtime="20231005 22:09:32.620"/>
+</for>
+<kw name="Move Emails" library="RPA.Outlook.Application">
+<arg>account_name=Satyapal.Kumar@hsc.com</arg>
+<arg>target_folder=VerifiedTickets</arg>
+<arg>source_folder=Inbox</arg>
+<arg>email_filter=[Subject]='Instant Award - Rashi Kapoor'</arg>
+<doc>Move emails from source folder to target folder.</doc>
+<msg timestamp="20231005 22:09:32.696" level="WARN">Did not find emails to move</msg>
+<status status="PASS" starttime="20231005 22:09:32.621" endtime="20231005 22:09:32.698"/>
+</kw>
+<status status="PASS" starttime="20231005 22:09:31.192" endtime="20231005 22:09:32.699"/>
+</test>
+<doc>This is just for test</doc>
+<status status="PASS" starttime="20231005 22:09:29.316" endtime="20231005 22:09:32.701"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test 01">Test 01</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231005 22:09:30.119" level="ERROR">Error in file 'd:\HSC_RPA_POC\test_01.robot' on line 3: Importing library 'RPA.Windows' failed: ImportError: cannot import name '_imaging' from 'PIL' (C:\Users\satya\AppData\Local\Programs\Python\Python311\Lib\site-packages\PIL\__init__.py)
+Traceback (most recent call last):
+  File "C:\Users\satya\AppData\Local\Programs\Python\Python311\Lib\site-packages\RPA\Windows\__init__.py", line 7, in &lt;module&gt;
+    from RPA.core.windows import WindowsElementsMixin
+  File "C:\Users\satya\AppData\Local\Programs\Python\Python311\Lib\site-packages\RPA\core\windows\__init__.py", line 9, in &lt;module&gt;
+    from .window import WindowMethods
+  File "C:\Users\satya\AppData\Local\Programs\Python\Python311\Lib\site-packages\RPA\core\windows\window.py", line 6, in &lt;module&gt;
+    from PIL import Image
+  File "C:\Users\satya\AppData\Local\Programs\Python\Python311\Lib\site-packages\PIL\Image.py", line 103, in &lt;module&gt;
+    from . import _imaging as core
+PYTHONPATH:
+  C:\Users\satya\AppData\Local\Programs\Python\Python311\Lib\site-packages
+  d:\HSC_RPA_POC
+  c:\Users\satya\.vscode\extensions\robocorp.robotframework-lsp-1.11.0\src\robotframework_debug_adapter
+  d:\HSC_RPA_POC
+  c:\Users\satya\.vscode\extensions\robocorp.robotframework-lsp-1.11.0\src
+  c:\Users\satya\.vscode\extensions\robocorp.robotframework-lsp-1.11.0\src\robotframework_ls\vendored
+  c:\ProgramData\robocorp\ht\fe60c60_b1f3c24_691db988\python310.zip
+  c:\ProgramData\robocorp\ht\fe60c60_b1f3c24_691db988\DLLs
+  c:\ProgramData\robocorp\ht\fe60c60_b1f3c24_691db988\lib
+  c:\ProgramData\robocorp\ht\fe60c60_b1f3c24_691db988
+  c:\ProgramData\robocorp\ht\fe60c60_b1f3c24_691db988\lib\site-packages
+  c:\ProgramData\robocorp\ht\fe60c60_b1f3c24_691db988\lib\site-packages\win32
+  c:\ProgramData\robocorp\ht\fe60c60_b1f3c24_691db988\lib\site-packages\win32\lib
+  c:\ProgramData\robocorp\ht\fe60c60_b1f3c24_691db988\lib\site-packages\Pythonwin</msg>
+<msg timestamp="20231005 22:09:30.304" level="ERROR">Error in file 'd:\HSC_RPA_POC\test_01.robot' on line 4: Importing library 'RPA.Email.ImapSmtp' failed: ImportError: cannot import name 'etree' from 'lxml' (C:\Users\satya\AppData\Local\Programs\Python\Python311\Lib\site-packages\lxml\__init__.py)
+Traceback (most recent call last):
+  File "C:\Users\satya\AppData\Local\Programs\Python\Python311\Lib\site-packages\RPA\Email\ImapSmtp.py", line 38, in &lt;module&gt;
+    from htmldocx import HtmlToDocx
+  File "C:\Users\satya\AppData\Local\Programs\Python\Python311\Lib\site-packages\htmldocx\__init__.py", line 1, in &lt;module&gt;
+    from .h2d import HtmlToDocx
+  File "C:\Users\satya\AppData\Local\Programs\Python\Python311\Lib\site-packages\htmldocx\h2d.py", line 21, in &lt;module&gt;
+    import docx, docx.table
+  File "C:\Users\satya\AppData\Local\Programs\Python\Python311\Lib\site-packages\docx\__init__.py", line 3, in &lt;module&gt;
+    from docx.api import Document  # noqa
+  File "C:\Users\satya\AppData\Local\Programs\Python\Python311\Lib\site-packages\docx\api.py", line 14, in &lt;module&gt;
+    from docx.package import Package
+  File "C:\Users\satya\AppData\Local\Programs\Python\Python311\Lib\site-packages\docx\package.py", line 9, in &lt;module&gt;
+    from docx.opc.package import OpcPackage
+  File "C:\Users\satya\AppData\Local\Programs\Python\Python311\Lib\site-packages\docx\opc\package.py", line 9, in &lt;module&gt;
+    from docx.opc.part import PartFactory
+  File "C:\Users\satya\AppData\Local\Programs\Python\Python311\Lib\site-packages\docx\opc\part.py", line 12, in &lt;module&gt;
+    from .oxml import serialize_part_xml
+  File "C:\Users\satya\AppData\Local\Programs\Python\Python311\Lib\site-packages\docx\opc\oxml.py", line 12, in &lt;module&gt;
+    from lxml import etree
+PYTHONPATH:
+  C:\Users\satya\AppData\Local\Programs\Python\Python311\Lib\site-packages
+  d:\HSC_RPA_POC
+  c:\Users\satya\.vscode\extensions\robocorp.robotframework-lsp-1.11.0\src\robotframework_debug_adapter
+  d:\HSC_RPA_POC
+  c:\Users\satya\.vscode\extensions\robocorp.robotframework-lsp-1.11.0\src
+  c:\Users\satya\.vscode\extensions\robocorp.robotframework-lsp-1.11.0\src\robotframework_ls\vendored
+  c:\ProgramData\robocorp\ht\fe60c60_b1f3c24_691db988\python310.zip
+  c:\ProgramData\robocorp\ht\fe60c60_b1f3c24_691db988\DLLs
+  c:\ProgramData\robocorp\ht\fe60c60_b1f3c24_691db988\lib
+  c:\ProgramData\robocorp\ht\fe60c60_b1f3c24_691db988
+  c:\ProgramData\robocorp\ht\fe60c60_b1f3c24_691db988\lib\site-packages
+  c:\ProgramData\robocorp\ht\fe60c60_b1f3c24_691db988\lib\site-packages\win32
+  c:\ProgramData\robocorp\ht\fe60c60_b1f3c24_691db988\lib\site-packages\win32\lib
+  c:\ProgramData\robocorp\ht\fe60c60_b1f3c24_691db988\lib\site-packages\Pythonwin</msg>
+<msg timestamp="20231005 22:09:32.432" level="WARN">Visibility cannot be controlled on this app.</msg>
+<msg timestamp="20231005 22:09:32.696" level="WARN">Did not find emails to move</msg>
+</errors>
+</robot>
